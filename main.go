@@ -40,7 +40,12 @@ func main() {
 	*/
 
 	//initializeRoutes()
+	//r := initializeRoutes()
+	//r.Run(":8081")
+
 	router.GET("/", showIndexPage)
+	// Обработчик GET-запросов на /article/view/некоторый_article_id
+	router.GET("/article/view/:article_id", getArticle)
 
 	// 4. Запуск приложения
 	router.Run(":8081")		// задаём отдельный порт
