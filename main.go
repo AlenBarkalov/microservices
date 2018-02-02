@@ -8,6 +8,8 @@ import (
 var router *gin.Engine
 
 func main() {
+	// Переключаем gin из Debugmode в пром
+	gin.SetMode(gin.ReleaseMode)
 	// 1. Создаём роутер Gin
 	router := gin.Default()
 
