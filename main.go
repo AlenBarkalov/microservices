@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"net/http"
+	//"net/http"
 )
 
 var router *gin.Engine
@@ -12,6 +12,8 @@ func main() {
 	router := gin.Default()
 
 	// 2. Загрузим все шаблоны
+	// Обработаем шаблоны вначале, так что их не нужно будет перечитывать
+	// ещё раз. Из-за этого вывод HTML-страниц такой быстрый.
 	router.LoadHTMLGlob("templates/*")
 	/*
 		Это загрузит все шаблоны из папки templates. Загрузив один раз шаблоны,
@@ -19,6 +21,7 @@ func main() {
 	*/
 
 	// 3. Задаём обработчик роутов:
+	/* Выносим содержимое в routes.go
 	router.GET("/", func(c *gin.Context) {
 
 		// Call the HTML method of the Context to render a template
@@ -34,6 +37,10 @@ func main() {
 		)
 
 	})
+	*/
+
+	//initializeRoutes()
+	router.GET("/", showIndexPage)
 
 	// 4. Запуск приложения
 	router.Run(":8081")		// задаём отдельный порт
